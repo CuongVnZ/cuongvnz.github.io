@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Map</title>
+        
+        <link href="css/map.css" rel="stylesheet">
+
+        <script type="text/javascript" src="js/rhill-voronoi-core.min.js"></script>
+        <script type="text/javascript" src="js/paper.js"></script>
+        <script type="text/javascript" src="js/Simplex.js"></script>
+        <script type="text/javascript" src="js/perlin.js"></script>
+        <script type="text/javascript" src="js/Island.js"></script>
+	</head>
+
+	<body>
+        <canvas id="island" resize="true"></canvas>
+        <canvas id="perlin" hidden="true"></canvas>
+        
+        <script type="application/javascript">
+            paper.install(window);
+            window.onload = function(e) {
+                paper.setup('island');
+
+                var islandCanvas = document.getElementById('island');
+                var perlinCanvas = document.getElementById('perlin');
+
+                islandCanvas.onclick = function() {
+                    Island.toggleDebug();
+                    perlinCanvas.style.display = (perlinCanvas.style.display == 'block' ? 'none' : 'block');
+                };
+
+                Island.init();
+            };
+        </script>
+        <noscript>You need to enable Javascript in your browser for this page to display properly.</noscript>
+	</body>
+</html>
